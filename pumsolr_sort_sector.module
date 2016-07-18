@@ -4,12 +4,19 @@
  * @license http://www.gnu.org/licenses/agpl-3.0.html
  */
 
-function pumsolr_sort_sector_apachesolr_query_prepare(DrupalSolrQueryInterface &$query, &$caller) {
+/**
+ * Adds the sector IDs of the user for sorting purposes.
+ *
+ * Implements hook_apachesolr_query_prepare().
+ *
+ * @param DrupalSolrQueryInterface $query
+ */
+function pumsolr_sort_sector_apachesolr_query_prepare(DrupalSolrQueryInterface &$query) {
   $sector_tids = _pumsolr_sort_sector_get_user_sector_tids();
   if (count($sector_tids)) {
     $bias = _pumsolr_sort_sector_get_bias();
     $fq = 'im_field_pum_sector:(' . implode(" OR ", $sector_tids) . ')^' . $bias;
-    $query->addParam('fl', $fq);
+    $query->addParam('bq', $fq);
   }
 }
 
