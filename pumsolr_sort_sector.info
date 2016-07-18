@@ -1,0 +1,7 @@
+name = Sort by sectory (Apache SOLR)
+description = Sort search result by sector of user.
+core = 7.x
+package = PUM SOLR
+version = "7.x-1.15.1"
+dependencies[] = apachesolr (>=1.7)
+dependencies[] = pum_portal
