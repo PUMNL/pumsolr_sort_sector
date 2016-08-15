@@ -31,8 +31,8 @@ function _pumsolr_sort_sector_get_user_sector_tids() {
   if ($user->uid > 0) {
     $account = user_load($user->uid);
 
-    if ($account && !empty($account->field_pum_private['und'])) {
-      foreach ($account->field_pum_private['und'] as $userterm) {
+    if ($account && !empty($account->field_pum_user_sector['und'])) {
+      foreach ($account->field_pum_user_sector['und'] as $userterm) {
         $user_sector_tids[] = $userterm['tid'];
       }
     }
